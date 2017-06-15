@@ -35,6 +35,51 @@ public class AuthenticatorTest
         login("classpath:shiro-authenticator-all-fail.ini");
     }
     
+    @Test
+    public void testAtLeastOneSuccessfulStrategyWithSuccess()
+    {
+        login("classpath:shiro-authenticator-atLeastOne-success.ini");
+        Subject subject = SecurityUtils.getSubject();
+        
+        //得到一个身份集合，其包含了Realm验证成功的身份信息
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        Assert.assertEquals(2, principalCollection.asList().size());
+    }
+    
+    @Test
+    public void testFirstOneSuccessfulStrategyWithSuccess()
+    {
+        login("classpath:shiro-authenticator-first-success.ini");
+        Subject subject = SecurityUtils.getSubject();
+        
+        //得到一个身份集合，其包含了第一个Realm验证成功的身份信息
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        System.out.println(+principalCollection.asList().size());
+        Assert.assertEquals(2, principalCollection.asList().size());
+    }
+    
+    @Test
+    public void testAtLeastTwoStrategyWithSuccess()
+    {
+        login("classpath:shiro-authenticator-atLeastTwo-success.ini");
+        Subject subject = SecurityUtils.getSubject();
+        
+        //得到一个身份集合，因为myRealm1和myRealm4返回的身份一样所以输出时只返回一个
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        Assert.assertEquals(2, principalCollection.asList().size());
+    }
+    
+    @Test
+    public void testOnlyOneStrategyWithSuccess()
+    {
+        login("classpath:shiro-authenticator-onlyone-success.ini");
+        Subject subject = SecurityUtils.getSubject();
+        
+        //得到一个身份集合，因为myRealm1和myRealm4返回的身份一样所以输出时只返回一个
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        Assert.assertEquals(2, principalCollection.asList().size());
+    }
+    
     //公共方法
     private void login(String configFile)
     {
