@@ -21,7 +21,7 @@ public class MyRealm_2 implements Realm
         //得到密码
         String password = new String((char[])token.getCredentials());
         
-        if (!"liu".equals(username))
+        if (!"wang".equals(username))
         {
             //抛出用户名错误
             throw new UnknownAccountException();

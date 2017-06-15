@@ -1,6 +1,7 @@
 package com.github.liuzhihu.shiro_1;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
@@ -14,6 +15,8 @@ import org.junit.Test;
 
 public class AuthenticatorTest
 {
+    
+    //全部成功
     @Test
     public void testAllSuccessfulStrategyWithSuccess()
     {
@@ -23,6 +26,13 @@ public class AuthenticatorTest
         //得到一个身份集合，其包含了Realm验证成功的身份信息
         PrincipalCollection principalCollection = subject.getPrincipals();
         Assert.assertEquals(2, principalCollection.asList().size());
+    }
+    
+    //myRealm 验证失败
+    @Test(expected = UnknownAccountException.class)
+    public void testAllSuccessfulStrategyWithFail()
+    {
+        login("classpath:shiro-authenticator-all-fail.ini");
     }
     
     //公共方法

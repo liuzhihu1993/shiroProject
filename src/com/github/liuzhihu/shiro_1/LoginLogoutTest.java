@@ -146,7 +146,7 @@ public class LoginLogoutTest
         //6.添加断言      
         Assert.assertEquals(true, subject.isAuthenticated()); //断言用户已经登录
         
-        //6、退出
+        //7、退出
         subject.logout();
     }
     
