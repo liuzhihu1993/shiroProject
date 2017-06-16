@@ -54,7 +54,7 @@ public class AuthenticatorTest
         
         //得到一个身份集合，其包含了第一个Realm验证成功的身份信息
         PrincipalCollection principalCollection = subject.getPrincipals();
-        Assert.assertEquals(2, principalCollection.asList().size());
+        Assert.assertEquals(1, principalCollection.asList().size());
     }
     
     @Test
@@ -65,7 +65,7 @@ public class AuthenticatorTest
         
         //得到一个身份集合，因为myRealm1和myRealm4返回的身份一样所以输出时只返回一个
         PrincipalCollection principalCollection = subject.getPrincipals();
-        Assert.assertEquals(2, principalCollection.asList().size());
+        Assert.assertEquals(1, principalCollection.asList().size());
     }
     
     @Test
@@ -76,15 +76,14 @@ public class AuthenticatorTest
         
         //得到一个身份集合，因为myRealm1和myRealm4返回的身份一样所以输出时只返回一个
         PrincipalCollection principalCollection = subject.getPrincipals();
-        Assert.assertEquals(2, principalCollection.asList().size());
+        Assert.assertEquals(1, principalCollection.asList().size());
     }
     
     //公共方法
     private void login(String configFile)
     {
         //1.第一步：获取SecurityManager工厂类
-        Factory<SecurityManager> factory =
-            new IniSecurityManagerFactory("classpath:shiro-authenticator-all-success.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory(configFile);
         
         //2.第二步：从共厂中获取SecurityManager
         SecurityManager securityManager = factory.getInstance();
