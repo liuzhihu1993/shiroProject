@@ -10,7 +10,7 @@ public class PermissionTest extends BaseTest
     @Test
     public void testIsPermitted()
     {
-        login("classpath:shiro-permission.ini", "liu", "123");
+        login("classpath:shiro-permission.ini", "zhang", "123");
         //判断拥有权限：user:create
         Assert.assertTrue(subject().isPermitted("user:create"));
         //判断拥有权限：user:update and user:delete
@@ -22,7 +22,7 @@ public class PermissionTest extends BaseTest
     @Test(expected = UnauthorizedException.class)
     public void testCheckPermission()
     {
-        login("classpath:shiro-permission.ini", "liu", "123");
+        login("classpath:shiro-permission.ini", "zhang", "123");
         //断言拥有权限：user:create
         subject().checkPermission("user:create");
         //断言拥有权限：user:delete and user:update

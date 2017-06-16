@@ -54,7 +54,7 @@ public class NonConfigurationCreateTest
         
         Subject subject = SecurityUtils.getSubject();
         
-        UsernamePasswordToken token = new UsernamePasswordToken("liu", "123");
+        UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
         subject.login(token);
         
         Assert.assertTrue(subject.isAuthenticated());

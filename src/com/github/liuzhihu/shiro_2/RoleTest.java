@@ -11,7 +11,7 @@ public class RoleTest extends BaseTest
     @Test
     public void testHasRole()
     {
-        login("classpath:shiro-role.ini", "liu", "123");
+        login("classpath:shiro-role.ini", "zhang", "123");
         
         //1、校验是否包含role1权限
         Assert.assertTrue(subject().hasRole("role1"));

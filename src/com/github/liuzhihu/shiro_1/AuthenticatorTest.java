@@ -92,7 +92,7 @@ public class AuthenticatorTest
         SecurityUtils.setSecurityManager(securityManager);
         //4.第四步：得到Subject及创建用户名/密码身份验证Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("liu", "123");
+        UsernamePasswordToken token = new UsernamePasswordToken("zhang", "123");
         
         subject.login(token);
     }
